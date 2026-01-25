@@ -7,7 +7,7 @@
       // SPA fallback for GitHub Pages
       // Redirect /quiz-app/anything to /quiz-app/?p=/anything
       var l = window.location;
-      var repo = "/quiz-app";
+      var repo = "/quiz-app/";
       var path = l.pathname.startsWith(repo) ? l.pathname.slice(repo.length) : l.pathname;
 
       l.replace(
