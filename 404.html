@@ -1,39 +1,25 @@
-<!doctype html>
-<html>
+<script>
+  (function () {
+    var l = window.location;
+    var repo = "/quiz-app/";
 
-<head>
-    <meta charset="utf-8" />
-    <title>Redirecting…</title>
-    <script>
-        // SPA fallback for GitHub Pages
-        // Redirect /quiz-app/anything to /quiz-app/?p=/anything
-        var l = window.location;
-        var repo = "/quiz-app/";
+    var path = l.pathname.startsWith(repo)
+      ? l.pathname.slice(repo.length)
+      : l.pathname;
 
+    // ensure leading slash
+    if (!path.startsWith("/")) {
+      path = "/" + path;
+    }
 
-
-        var path = l.pathname.startsWith(repo)
-            ? l.pathname.slice(repo.length)
-            : l.pathname;
-
-        // remove leading slash if present
-        if (path.startsWith("/")) {
-            path = path.slice(1);
-        }
-        
-
-        l.replace(
-            repo +
-            "/?p=" +
-            encodeURIComponent(path) +
-            "&q=" +
-            encodeURIComponent(l.search) +
-            "&h=" +
-            encodeURIComponent(l.hash)
-        );
-    </script>
-</head>
-
-<body></body>
-
-</html>
+    l.replace(
+      repo +
+        "?p=" +
+        encodeURIComponent(path) +
+        "&q=" +
+        encodeURIComponent(l.search) +
+        "&h=" +
+        encodeURIComponent(l.hash)
+    );
+  })();
+</script>
