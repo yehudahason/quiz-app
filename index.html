@@ -12,7 +12,7 @@
 
 <body>
   <div id="root"></div>
-  <script>
+  <script defer>
     if (!location.hash && location.pathname !== "/quiz-app/") {
       location.replace("/quiz-app/#" + location.pathname.replace("/quiz-app", ""));
     }
