@@ -3,22 +3,22 @@
   <head>
     <meta charset="utf-8" />
     <title>Redirecting…</title>
-    <meta name="robots" content="noindex" />
     <script>
-      (function () {
-        var repo = "/quiz-app"; // must match your repo name
-        var path = window.location.pathname;
+      // SPA fallback for GitHub Pages
+      // Redirect /quiz-app/anything to /quiz-app/?p=/anything
+      var l = window.location;
+      var repo = "/quiz-app";
+      var path = l.pathname.startsWith(repo) ? l.pathname.slice(repo.length) : l.pathname;
 
-        // if you're at /quiz-app/something, keep "/something"
-        var rest = path.startsWith(repo) ? path.slice(repo.length) : path;
-
-        // preserve query/hash (hash here would be empty on server 404, but keep it anyway)
-        var search = window.location.search || "";
-        var hash = window.location.hash || "";
-
-        // redirect to HashRouter route
-        window.location.replace(repo + "/#"+ rest + search + hash);
-      })();
+      l.replace(
+        repo +
+          "/?p=" +
+          encodeURIComponent(path) +
+          "&q=" +
+          encodeURIComponent(l.search) +
+          "&h=" +
+          encodeURIComponent(l.hash)
+      );
     </script>
   </head>
   <body></body>

@@ -7,18 +7,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script>
   (function () {
-    const repo = "/quiz-app"; // MUST match your repo name
-    const { pathname, hash } = window.location;
+    var params = new URLSearchParams(window.location.search);
+    var p = params.get("p");
+    var q = params.get("q");
+    var h = params.get("h");
 
-    // If there's no hash and we're not exactly at /quiz-app/
-    if (!hash && pathname.startsWith(repo) && pathname !== repo + "/") {
-      const newPath = pathname.replace(repo, "");
-      window.location.replace(repo + "/#"+ newPath);
+    if (p) {
+      // remove our redirect params
+      params.delete("p");
+      params.delete("q");
+      params.delete("h");
+
+      var clean =
+        window.location.pathname +
+        (params.toString() ? "?" + params.toString() : "");
+
+      // restore real URL
+      window.history.replaceState(null, "", clean);
+      window.history.replaceState(null, "", window.location.pathname + p + (q ? q : "") + (h ? h : ""));
     }
   })();
 </script>
+
   <title>quiz-app</title>
-  <script type="module" crossorigin src="/quiz-app/assets/index-qzUqHrlx.js"></script>
+  <script type="module" crossorigin src="/quiz-app/assets/index-CUUybjwO.js"></script>
   <link rel="stylesheet" crossorigin href="/quiz-app/assets/index-COcDBgFa.css">
 </head>
 
