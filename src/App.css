@@ -162,6 +162,21 @@ main {
   background-color: #306aff;
   height: 740px;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.quiz-con .sec1 {
+  width: 100%;
+  height: 50%;
+  background-color: #2fd887;
+}
+.quiz-con .sec2 {
+  width: 100%;
+  height: 50%;
+  background-color: #a729f5;
 }
 
 @media (min-width: 700px) {
@@ -209,9 +224,20 @@ main {
   .quiz-con {
     width: 1157px;
     height: 464px;
+    flex-direction: row;
   }
   .access-icon {
     width: 253px;
     height: 56px;
+  }
+  .quiz-con .sec1 {
+    width: 50%;
+    height: 100%;
+    background-color: #2fd887;
+  }
+  .quiz-con .sec2 {
+    width: 50%;
+    height: 100%;
+    background-color: #a729f5;
   }
 }
