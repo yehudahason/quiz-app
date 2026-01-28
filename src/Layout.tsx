@@ -15,9 +15,10 @@ const Layout = () => {
   return (
     <main>
       <div className="head">
-        <span className="access-icon">
+        <div className="access-icon">
           <img src={accessibility} alt="Accessibility" />
-        </span>
+          <span className="access-title">Accessibility</span>
+        </div>
         <div className="theme-toggle">
           <span className="icon sun">
             <div className={isDark ? "img-sun dark" : "img-sun"}></div>

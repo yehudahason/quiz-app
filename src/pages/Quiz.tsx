@@ -1,5 +1,5 @@
 const Quiz = () => {
-  return <h1>Quiz</h1>;
+  return;
 };
 
 export default Quiz;

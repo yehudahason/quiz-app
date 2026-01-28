@@ -38,6 +38,8 @@ body {
   background-color: var(--grey-50);
   min-height: 100vh;
   z-index: 1;
+
+  flex-direction: column;
 }
 
 body.dark {
@@ -47,28 +49,62 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background: url("/img/pattern-background-desktop-light.svg") no-repeat top
+  background: url("/img/pattern-background-desktop-dark.svg") no-repeat top
     center / cover;
   z-index: -1;
+}
+body.dark::before {
+  background: url("/img/pattern-background-desktop-light.svg") no-repeat top
+    center / cover;
+}
+main {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px 24px;
+}
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.access-icon {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 167px;
+  height: 40px;
+}
+
+.access-icon img {
+  width: auto;
+  height: 100%;
+  display: block;
 }
 
 .theme-toggle {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 16px;
+  gap: 8px;
+  height: 20px;
+  /* padding: 16px; */
 }
 
 .icon {
   font-size: 18px;
   color: #6b7280;
+  height: 100%;
 }
 
 /* Switch */
 .switch {
   position: relative;
-  width: 44px;
-  height: 24px;
+  width: 32px;
+  height: 20px;
 }
 
 .switch input {
@@ -89,8 +125,8 @@ body::before {
 .slider::before {
   content: "";
   position: absolute;
-  height: 18px;
-  width: 18px;
+  height: 14px;
+  width: 14px;
   left: 3px;
   top: 3px;
   background-color: white;
@@ -98,11 +134,18 @@ body::before {
   transition: transform 0.2s ease;
 }
 
+/* Checked state */
+.switch input:checked + .slider::before {
+  transform: translateX(12px);
+}
+
 .img-sun {
   content: url("/img/icon-sun-dark.svg");
+  height: 100%;
 }
 .img-moon {
   content: url("/img/icon-moon-dark.svg");
+  height: 100%;
 }
 
 .img-sun.dark {
@@ -115,23 +158,60 @@ body::before {
   content: url("/img/icon-sun-light.svg");
 }
 
-/* Checked state */
-.switch input:checked + .slider::before {
-  transform: translateX(20px);
+.quiz-con {
+  background-color: #306aff;
+  height: 740px;
+  width: 100%;
 }
 
-.head {
-  display: flex;
-  justify-content: space-between;
-}
-.access-icon {
-  display: flex;
-  align-items: center;
-  width: 30px;
+@media (min-width: 700px) {
+  main {
+    padding: 40px 64px;
+    gap: 49px;
+  }
+  .head {
+    width: 640px;
+  }
+  .access-icon {
+    width: 253px;
+    height: 56px;
+  }
+  .theme-toggle {
+    height: 24px;
+  }
+  .switch {
+    width: 48px;
+    height: 28px;
+  }
+  .slider::before {
+    height: 22px;
+    width: 22px;
+    left: 3px;
+    top: 3px;
+  }
+  .switch input:checked + .slider::before {
+    transform: translateX(20px);
+  }
+
+  .quiz-con {
+    width: 640px;
+    height: 670px;
+  }
 }
 
-.access-icon img {
-  width: 30px;
-  height: 30px;
-  display: block;
+@media (min-width: 1160px) {
+  main {
+    gap: 85px;
+  }
+  .head {
+    width: 1157px;
+  }
+  .quiz-con {
+    width: 1157px;
+    height: 464px;
+  }
+  .access-icon {
+    width: 253px;
+    height: 56px;
+  }
 }
