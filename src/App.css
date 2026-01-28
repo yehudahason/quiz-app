@@ -4,6 +4,7 @@
 }
 
 :root {
+  /* Grey */
   --grey-50: #f4f6fa;
   --grey-500: #626c7f;
 
@@ -15,8 +16,122 @@
   --blue-850: #3b4d66;
   --blue-900: #313e51;
   --blue-950: #2d3949;
+
+  /*Green  */
+  --green-500: #2fd887;
+  --green-100: #e0feef;
+
+  /* Purple */
+  --purple-600: #a729f5;
+  --purple-100: #f6efff;
+
+  /* Orange */
+  --orange-400: #ff7e35;
+  --orange-50: #fff5ed;
+
+  /* Red */
+  --red-500: #ee5454;
 }
 
 body {
-  background-color: var(--blue-100);
+  position: relative;
+  background-color: var(--grey-50);
+  min-height: 100vh;
+  z-index: 1;
+}
+
+body.dark {
+  background-color: var(--blue-900);
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url("/img/pattern-background-desktop-light.svg") no-repeat top
+    center / cover;
+  z-index: -1;
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+}
+
+.icon {
+  font-size: 18px;
+  color: #6b7280;
+}
+
+/* Switch */
+.switch {
+  position: relative;
+  width: 44px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  inset: 0;
+  background-color: #a729f5;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  top: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+}
+
+.img-sun {
+  content: url("/img/icon-sun-dark.svg");
+}
+.img-moon {
+  content: url("/img/icon-moon-dark.svg");
+}
+
+.img-sun.dark {
+  content: url("/img/icon-sun-light.svg");
+}
+.img-moon.dark {
+  content: url("/img/icon-moon-light.svg");
+}
+.switch input:checked .img-sun {
+  content: url("/img/icon-sun-light.svg");
+}
+
+/* Checked state */
+.switch input:checked + .slider::before {
+  transform: translateX(20px);
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+}
+.access-icon {
+  display: flex;
+  align-items: center;
+  width: 30px;
+}
+
+.access-icon img {
+  width: 30px;
+  height: 30px;
+  display: block;
 }
