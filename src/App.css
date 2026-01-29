@@ -221,12 +221,6 @@ body.dark .start-con1 span {
   font: var(--text-5-md);
 }
 
-.start-con1.quiz {
-  display: none;
-}
-.startquiz.quiz {
-  display: none;
-}
 body.dark .start-con1 p {
   color: var(--blue-300);
 }

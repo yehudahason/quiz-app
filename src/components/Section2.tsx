@@ -1,10 +1,12 @@
-import { useState } from "react";
+type Props = {
+  selected: string;
+  setSelected: React.Dispatch<React.SetStateAction<string>>;
+};
+
 import Answer from "./Answer";
 
 const baseurl = import.meta.env.BASE_URL;
-const Section2 = () => {
-  const [selected, setSelected] = useState("");
-
+const Section2 = ({ selected, setSelected }: Props) => {
   function handleSelected(value: string) {
     setSelected(value);
   }
