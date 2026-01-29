@@ -1,4 +1,5 @@
-import "../assets/css/answer.css";
+import "../css/answer.css";
+const baseurl = import.meta.env.BASE_URL;
 
 type Props = {
   val: string;
@@ -8,7 +9,6 @@ const Answer = ({ val }: Props) => {
   return (
     <>
       <div className="card">
-        <h1>{val}</h1>
         <input id="optA" type="radio" name="ratio" />
         <label className="option" htmlFor="optA">
           <div className="badge">A</div>
@@ -34,6 +34,10 @@ const Answer = ({ val }: Props) => {
         </label>
 
         <button className="submit">Submit Answer</button>
+        <span className="msg">
+          <img src={baseurl + "/assets/images/icon-error.svg"} alt="" />
+          Pleae select an answer
+        </span>
       </div>
     </>
   );

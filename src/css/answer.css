@@ -1,0 +1,121 @@
+/* main card */
+.card {
+  border-radius: 18px;
+  /* padding: 18px; */
+  height: 100%;
+}
+
+.option {
+  height: 72px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 14px;
+  margin: 0 0 16px;
+  cursor: pointer;
+  background-color: white;
+  transition:
+    transform 120ms ease,
+    background 120ms ease;
+}
+.option:hover {
+  /* background: rgba(255, 255, 255, 0.09); */
+  transform: translateY(-1px);
+}
+
+body.dark .option {
+  background-color: var(--blue-850);
+  color: white;
+}
+.badge {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: var(--grey-50);
+  color: var(--grey-500);
+  display: grid;
+  place-items: center;
+  font: var(--text-4);
+  flex: 0 0 auto;
+}
+
+.value {
+  font: var(--text-4);
+  color: var(--grey900);
+  letter-spacing: 0.2px;
+}
+
+.submit {
+  width: 100%;
+  border: 0;
+  height: 56px;
+  padding: 16px 18px;
+  border-radius: 14px;
+  font: var(--text-4);
+  color: #fff;
+  background: var(--purple-600);
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(200, 139, 255, 0.25);
+  transition:
+    transform 120ms ease,
+    filter 120ms ease;
+}
+.submit:hover {
+  filter: brightness(1.03);
+  transform: translateY(-1px);
+}
+.submit:active {
+  transform: translateY(0px);
+}
+
+/* optional: selected state (pure CSS with radio) */
+input[type="radio"] {
+  display: none;
+}
+input[type="radio"]:checked + label.option {
+  outline: 2px solid rgba(200, 139, 255, 0.9);
+  background: rgba(200, 139, 255, 0.12);
+}
+
+.msg {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  font: var(--text-4);
+  color: var(--red-500);
+}
+.msg img {
+  height: 30px;
+  width: 30px;
+}
+@media (min-width: 700px) {
+  .submit {
+    margin-top: 16px;
+    height: 92px;
+  }
+  .badge {
+    height: 56px;
+    width: 56px;
+  }
+  .option {
+    height: 88px;
+  }
+  .msg {
+    margin-top: 32px;
+  }
+  .msg img {
+    height: 40px;
+    width: 40px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .option {
+    height: 103px;
+    padding: 38px;
+  }
+}

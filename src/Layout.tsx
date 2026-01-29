@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
-import accessibility from "./assets/images/icon-accessibility.svg";
 import { useEffect, useState } from "react";
+const baseurl = import.meta.env.BASE_URL;
 
 const Layout = () => {
   const [isDark, setIsDark] = useState(false);
@@ -16,7 +16,10 @@ const Layout = () => {
     <main>
       <div className="head">
         <div className="access-icon">
-          <img src={accessibility} alt="Accessibility" />
+          <img
+            src={baseurl + "/assets/images/icon-accessibility.svg"}
+            alt="Accessibility"
+          />
           <span className="access-title">Accessibility</span>
         </div>
         <div className="theme-toggle">

@@ -62,13 +62,13 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background: url("/img/pattern-background-desktop-light.svg") no-repeat top
-    center / cover;
+  background: url("/assets/images/pattern-background-desktop-light.svg")
+    no-repeat top center / cover;
   z-index: -1;
 }
 body.dark::before {
-  background: url("/img/pattern-background-desktop-dark.svg") no-repeat top
-    center / cover;
+  background: url("/assets/images/pattern-background-desktop-dark.svg")
+    no-repeat top center / cover;
 }
 main {
   min-height: 100vh;
@@ -316,8 +316,13 @@ ul.startquiz li img {
   }
   .quiz-con {
     width: 640px;
-    height: 670px;
+    height: 900px;
     gap: 64px;
+  }
+  .quiz-con .sec1,
+  .quiz-con .sec2 {
+    width: 100%;
+    height: auto;
   }
   ul.startquiz {
     gap: 24px;
@@ -332,7 +337,7 @@ ul.startquiz li img {
   }
 }
 
-@media (min-width: 1160px) {
+@media (min-width: 1200px) {
   main {
     gap: 85px;
   }
@@ -340,8 +345,8 @@ ul.startquiz li img {
     width: 1157px;
   }
   .quiz-con {
-    width: 1157px;
-    height: 464px;
+    width: 1160px;
+    height: 660px;
     flex-direction: row;
   }
   .access-icon {
