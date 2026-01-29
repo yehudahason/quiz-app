@@ -43,6 +43,7 @@
   --text-4: 500 18px/1 "Rubik", sans-serif;
   --text-5-md: 500 14px/1.5 "Rubik", sans-serif;
   --text-5-regular: 400 14px/1.5 "Rubik", sans-serif;
+  --text-6: italic 400 20px/1.5 "Rubik", sans-serif;
 }
 
 body {
@@ -98,6 +99,13 @@ main {
   display: block;
 }
 
+.access-title {
+  font: var(--text-4);
+}
+
+body.dark .access-title {
+  color: white;
+}
 .theme-toggle {
   display: flex;
   align-items: center;
@@ -210,8 +218,15 @@ body.dark .start-con1 span {
 }
 .start-con1 p {
   color: var(--grey-500);
+  font: var(--text-5-md);
 }
 
+.start-con1.quiz {
+  display: none;
+}
+.startquiz.quiz {
+  display: none;
+}
 body.dark .start-con1 p {
   color: var(--blue-300);
 }
@@ -296,7 +311,9 @@ ul.startquiz li img {
   .switch input:checked + .slider::before {
     transform: translateX(20px);
   }
-
+  .start-con1 p {
+    font: var(--text-6);
+  }
   .quiz-con {
     width: 640px;
     height: 670px;
