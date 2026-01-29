@@ -2,7 +2,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home";
 import NotFound from "./pages/notFound";
-import Quiz from "./pages/Quiz";
 import Layout from "./Layout";
 
 function App() {
@@ -14,7 +13,6 @@ function App() {
         <Routes>
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
-            <Route path="/profile" element={<Quiz />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>

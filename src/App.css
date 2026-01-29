@@ -1,6 +1,7 @@
 * {
   box-sizing: border-box;
   margin: 0;
+  padding: 0;
 }
 
 :root {
@@ -31,6 +32,17 @@
 
   /* Red */
   --red-500: #ee5454;
+  /* =========================
+     Font Family
+     ========================= */
+
+  --text-1: 500 88px/1 "Rubik", sans-serif;
+  --text-2-md: 800 40px/1 "Rubik", sans-serif;
+  --text-2-light: 300 40px/1 "Rubik", sans-serif;
+  --text-3: 500 20px/1.2 "Rubik", sans-serif;
+  --text-4: 500 18px/1 "Rubik", sans-serif;
+  --text-5-md: 500 14px/1.5 "Rubik", sans-serif;
+  --text-5-regular: 400 14px/1.5 "Rubik", sans-serif;
 }
 
 body {
@@ -49,12 +61,12 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background: url("/img/pattern-background-desktop-dark.svg") no-repeat top
+  background: url("/img/pattern-background-desktop-light.svg") no-repeat top
     center / cover;
   z-index: -1;
 }
 body.dark::before {
-  background: url("/img/pattern-background-desktop-light.svg") no-repeat top
+  background: url("/img/pattern-background-desktop-dark.svg") no-repeat top
     center / cover;
 }
 main {
@@ -159,27 +171,104 @@ main {
 }
 
 .quiz-con {
-  background-color: #306aff;
+  /* background-color: #306aff; */
   height: 740px;
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: column;
+  gap: 40px;
 }
 
 .quiz-con .sec1 {
   width: 100%;
-  height: 50%;
-  background-color: #2fd887;
+  background-color: transparent;
+}
+.start-con1 {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.start-con1 span.a {
+  color: var(--blue-900);
+  font:
+    300 28px/1 "Rubik",
+    sans-serif;
+}
+.start-con1 span.b {
+  font:
+    800 28px/1 "Rubik",
+    sans-serif;
+
+  color: var(--blue-900);
+}
+
+body.dark .start-con1 span {
+  color: white;
+}
+.start-con1 p {
+  color: var(--grey-500);
+}
+
+body.dark .start-con1 p {
+  color: var(--blue-300);
 }
 .quiz-con .sec2 {
   width: 100%;
   height: 50%;
-  background-color: #a729f5;
 }
 
+ul.startquiz {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+}
+ul.startquiz li {
+  text-decoration: none;
+  list-style: none;
+  padding: 2px;
+  gap: 11px;
+  background-color: white;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  font: var(--text-4);
+  height: 72px;
+}
+body.dark ul.startquiz li {
+  background-color: var(--blue-850);
+  color: white;
+}
+ul.startquiz li img {
+  width: 28px;
+  height: 28px;
+}
+
+@media (min-width: 340px) {
+  .start-con1 span.a {
+    font: var(--text-2-light);
+    color: var(--blue-900);
+  }
+  .start-con1 span.b {
+    font: var(--text-2-md);
+    color: var(--blue-900);
+  }
+}
 @media (min-width: 700px) {
+  :root {
+    --text-1: 500 144px/1 "Rubik", sans-serif;
+    --text-2-md: 800 64px/1 "Rubik", sans-serif;
+    --text-2-light: 300 64px/1 "Rubik", sans-serif;
+    --text-3: 500 36px/1.2 "Rubik", sans-serif;
+    --text-4: 500 28px/1 "Rubik", sans-serif;
+    --text-5-md: 500 24px/1.5 "Rubik", sans-serif;
+    --text-5-regular: 400 24px/1.5 "Rubik", sans-serif;
+    --text-6: italic 400 20px/1.5 "Rubik", sans-serif;
+  }
   main {
     padding: 40px 64px;
     gap: 49px;
@@ -211,6 +300,18 @@ main {
   .quiz-con {
     width: 640px;
     height: 670px;
+    gap: 64px;
+  }
+  ul.startquiz {
+    gap: 24px;
+  }
+  ul.startquiz li {
+    height: 88px;
+    gap: 14px;
+  }
+  ul.startquiz li img {
+    width: 56px;
+    height: 56px;
   }
 }
 
@@ -233,11 +334,9 @@ main {
   .quiz-con .sec1 {
     width: 50%;
     height: 100%;
-    background-color: #2fd887;
   }
   .quiz-con .sec2 {
     width: 50%;
     height: 100%;
-    background-color: #a729f5;
   }
 }
