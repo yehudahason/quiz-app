@@ -12,31 +12,38 @@ const Section2 = ({ selected, setSelected }: Props) => {
   }
   return (
     <>
-      {selected ? (
-        ""
-      ) : (
-        <ul className="startquiz">
-          <li onClick={() => handleSelected("html")}>
-            <img src={baseurl + "/assets/images/icon-html.svg"} alt="" /> HTML
-          </li>
-          <li onClick={() => handleSelected("css")}>
-            <img src={baseurl + "/assets/images/icon-css.svg"} alt="" /> CSS
-          </li>
-          <li onClick={() => handleSelected("javascript")}>
-            <img src={baseurl + "/assets/images/icon-js.svg"} alt="" />
-            JavaScript
-          </li>
-          <li onClick={() => handleSelected("accessibility")}>
+      <ul className="startquiz">
+        <li onClick={() => handleSelected("html")}>
+          <img src={baseurl + "/assets/images/icon-html.svg"} alt="" /> HTML
+        </li>
+        <li onClick={() => handleSelected("css")}>
+          <img src={baseurl + "/assets/images/icon-css.svg"} alt="" /> CSS
+        </li>
+        <li onClick={() => handleSelected("javascript")}>
+          <img src={baseurl + "/assets/images/icon-js.svg"} alt="" />
+          JavaScript
+        </li>
+        <li onClick={() => handleSelected("accessibility")}>
+          <img src={baseurl + "/assets/images/icon-accessibility.svg"} alt="" />
+          Accessibility
+        </li>
+      </ul>
+
+      {selected ? <Answer val={selected} /> : ""}
+      {/* <div className="score-stage">
+        <div className="score">
+          <h2>
             <img
               src={baseurl + "/assets/images/icon-accessibility.svg"}
               alt=""
             />
-            Accessibility
-          </li>
-        </ul>
-      )}
-
-      {selected ? <Answer val={selected} /> : ""}
+            <span>Accessibility</span>
+          </h2>
+          <span className="total">8</span>
+          <span className="out">Out of 10</span>
+        </div>
+        <button className="restart-btn">Play Again</button>
+      </div> */}
     </>
   );
 };
