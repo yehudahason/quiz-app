@@ -9,7 +9,7 @@ const Section1 = ({ selected }: Props) => {
         <div className="quiz">
           <div className="upper">
             <span className="stage">Question 6 of 10</span>
-            <h1>What does HTML stand for?</h1>
+            <h2>What does HTML stand for?</h2>
           </div>
           <div className="bar">
             <div className="progress"></div>
@@ -17,15 +17,21 @@ const Section1 = ({ selected }: Props) => {
         </div>
       ) : (
         <>
-          <div className="start-con1">
+          {/* <div className="start-con1">
             <h1>
               <span className="a">Welcome to the</span> <br />
               <span className="b"> Frontend Quiz!</span>
             </h1>
             <p>Pick a subject to get started.</p>
-          </div>{" "}
+          </div>{" "} */}
         </>
       )}
+      <div className="end-quiz">
+        <h1>
+          <span className="a">Quiz completed</span>
+          <span className="b">You scrored...</span>
+        </h1>
+      </div>
     </>
   );
 };

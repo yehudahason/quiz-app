@@ -198,14 +198,18 @@ body.dark .access-title {
   flex-direction: column;
   gap: 16px;
 }
-
-.start-con1 span.a {
+.end-quiz h1 {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+h1 span.a {
   color: var(--blue-900);
   font:
     300 28px/1 "Rubik",
     sans-serif;
 }
-.start-con1 span.b {
+h1 span.b {
   font:
     800 28px/1 "Rubik",
     sans-serif;
@@ -285,6 +289,11 @@ body.dark .bar {
   background-color: var(--purple-600);
   width: 100%;
 }
+.upper {
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+}
 .stage {
   font: var(--text-6);
   color: var(--grey-500);
@@ -292,21 +301,21 @@ body.dark .bar {
 body.dark .stage {
   color: var(--blue-300);
 }
-.upper h1 {
+.upper h2 {
   font: var(--text-3);
   font-weight: 600;
   color: var(--blue-900);
 }
 
-body.dark .upper h1 {
+body.dark .upper h2 {
   color: white;
 }
 @media (min-width: 340px) {
-  .start-con1 span.a {
+  h1 span.a {
     font: var(--text-2-light);
     color: var(--blue-900);
   }
-  .start-con1 span.b {
+  h1 span.b {
     font: var(--text-2-md);
     color: var(--blue-900);
   }
@@ -373,9 +382,12 @@ body.dark .upper h1 {
     width: 56px;
     height: 56px;
   }
+  .upper {
+    gap: 24px;
+  }
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 1150px) {
   main {
     gap: 85px;
   }
