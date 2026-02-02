@@ -1,49 +1,63 @@
 type Props = {
-  selected: string;
-  setSelected: React.Dispatch<React.SetStateAction<string>>;
+  stage: string;
+  setStage: React.Dispatch<React.SetStateAction<string>>;
+  endGame: boolean;
+  setEndGame: React.Dispatch<React.SetStateAction<boolean>>;
+  data: QuizData;
 };
 
+const subject = ["HTML", "CSS", "JavaScript", "Accessibility"];
+import type { QuizData } from "../types/quiz";
 import Answer from "./Answer";
 
 const baseurl = import.meta.env.BASE_URL;
-const Section2 = ({ selected, setSelected }: Props) => {
+const Section2 = ({ stage, setStage, endGame, setEndGame, data }: Props) => {
   function handleSelected(value: string) {
-    setSelected(value);
+    setStage(value);
+    // setEndGame(true);
   }
   return (
     <>
-      <ul className="startquiz">
-        <li onClick={() => handleSelected("html")}>
-          <img src={baseurl + "/assets/images/icon-html.svg"} alt="" /> HTML
-        </li>
-        <li onClick={() => handleSelected("css")}>
-          <img src={baseurl + "/assets/images/icon-css.svg"} alt="" /> CSS
-        </li>
-        <li onClick={() => handleSelected("javascript")}>
-          <img src={baseurl + "/assets/images/icon-js.svg"} alt="" />
-          JavaScript
-        </li>
-        <li onClick={() => handleSelected("accessibility")}>
-          <img src={baseurl + "/assets/images/icon-accessibility.svg"} alt="" />
-          Accessibility
-        </li>
-      </ul>
-
-      {selected ? <Answer val={selected} /> : ""}
-      {/* <div className="score-stage">
-        <div className="score">
-          <h2>
+      {!stage && (
+        <ul className="startquiz">
+          <li onClick={() => handleSelected("HTML")}>
+            <img src={baseurl + "/assets/images/icon-html.svg"} alt="" /> HTML
+          </li>
+          <li onClick={() => handleSelected("CSS")}>
+            <img src={baseurl + "/assets/images/icon-css.svg"} alt="" /> CSS
+          </li>
+          <li onClick={() => handleSelected("JavaScript")}>
+            <img src={baseurl + "/assets/images/icon-js.svg"} alt="" />
+            JavaScript
+          </li>
+          <li onClick={() => handleSelected("Accessibility")}>
             <img
               src={baseurl + "/assets/images/icon-accessibility.svg"}
               alt=""
             />
-            <span>Accessibility</span>
-          </h2>
-          <span className="total">8</span>
-          <span className="out">Out of 10</span>
+            Accessibility
+          </li>
+        </ul>
+      )}
+
+      {endGame ? (
+        <div className="score-stage">
+          <div className="score">
+            <h2>
+              <img
+                src={baseurl + "/assets/images/icon-accessibility.svg"}
+                alt=""
+              />
+              <span>Accessibility</span>
+            </h2>
+            <span className="total">8</span>
+            <span className="out">Out of 10</span>
+          </div>
+          <button className="restart-btn">Play Again</button>
         </div>
-        <button className="restart-btn">Play Again</button>
-      </div> */}
+      ) : (
+        subject.includes(stage) && <Answer val={stage} />
+      )}
     </>
   );
 };
