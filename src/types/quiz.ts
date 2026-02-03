@@ -5,9 +5,9 @@ export type Question = {
 };
 
 export type Quiz = {
-  title: string;
-  icon: string;
-  questions: Question[];
+  title?: string;
+  icon?: string;
+  questions?: Question[];
 };
 
 export type QuizData = {

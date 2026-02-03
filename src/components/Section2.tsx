@@ -1,24 +1,50 @@
 type Props = {
-  stage: string;
-  setStage: React.Dispatch<React.SetStateAction<string>>;
+  game: string;
+  setGame: React.Dispatch<React.SetStateAction<string>>;
   endGame: boolean;
   setEndGame: React.Dispatch<React.SetStateAction<boolean>>;
   data: QuizData;
+  row: Quiz;
+  setRow: React.Dispatch<React.SetStateAction<Quiz>>;
+  questions: Question[];
+  count: number;
+  setCount: React.Dispatch<React.SetStateAction<number>>;
 };
 
 const subject = ["HTML", "CSS", "JavaScript", "Accessibility"];
-import type { QuizData } from "../types/quiz";
+import { useEffect } from "react";
+import type { Question, Quiz, QuizData } from "../types/quiz";
 import Answer from "./Answer";
 
 const baseurl = import.meta.env.BASE_URL;
-const Section2 = ({ stage, setStage, endGame, setEndGame, data }: Props) => {
+const Section2 = ({
+  game,
+  setGame,
+  endGame,
+  setEndGame,
+  data,
+  row,
+  setRow,
+  questions,
+  count,
+  setCount,
+}: Props) => {
   function handleSelected(value: string) {
-    setStage(value);
+    setGame(value);
     // setEndGame(true);
   }
+
+  useEffect(() => {
+    if (game) {
+      const { quizzes } = data;
+      const quiz = quizzes.find((q) => q.title === game) as Quiz;
+      setRow(quiz);
+    }
+    // if (row) console.log(row.questions);
+  }, [game, row]);
   return (
     <>
-      {!stage && (
+      {!game && (
         <ul className="startquiz">
           <li onClick={() => handleSelected("HTML")}>
             <img src={baseurl + "/assets/images/icon-html.svg"} alt="" /> HTML
@@ -41,14 +67,11 @@ const Section2 = ({ stage, setStage, endGame, setEndGame, data }: Props) => {
       )}
 
       {endGame ? (
-        <div className="score-stage">
+        <div className="score-game">
           <div className="score">
             <h2>
-              <img
-                src={baseurl + "/assets/images/icon-accessibility.svg"}
-                alt=""
-              />
-              <span>Accessibility</span>
+              <img src={baseurl + row.icon} alt="" />
+              <span>{row.title}</span>
             </h2>
             <span className="total">8</span>
             <span className="out">Out of 10</span>
@@ -56,7 +79,15 @@ const Section2 = ({ stage, setStage, endGame, setEndGame, data }: Props) => {
           <button className="restart-btn">Play Again</button>
         </div>
       ) : (
-        subject.includes(stage) && <Answer val={stage} />
+        subject.includes(game) && (
+          <Answer
+            val={game}
+            questions={questions}
+            count={count}
+            setCount={setCount}
+            setEndGame={setEndGame}
+          />
+        )
       )}
     </>
   );

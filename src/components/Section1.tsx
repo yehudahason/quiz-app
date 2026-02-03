@@ -1,26 +1,24 @@
-import type { QuizData } from "../types/quiz";
+import type { Question, Quiz, QuizData } from "../types/quiz";
 
 type Props = {
-  stage: string;
+  game: string;
   endGame: boolean;
   data: QuizData;
+  row: Quiz;
+  questions: Question[];
+  count: number;
 };
 const subject = ["HTML", "CSS", "JavaScript", "Accessibility"];
 
-const Section1 = ({ stage, endGame, data }: Props) => {
-  function startQuiz() {
-    const { quizzes } = data;
-
-    const Quiz = quizzes.find((quiz) => quiz.title === stage);
-  }
+const Section1 = ({ game, endGame, data, row, questions, count }: Props) => {
   return (
     <>
       {!endGame &&
-        (subject.includes(stage) ? (
+        (subject.includes(game) ? (
           <div className="quiz">
             <div className="upper">
-              <span className="stage">Question 6 of 10</span>
-              <h2>What does HTML stand for?</h2>
+              <span className="game">Question {count + 1} of 10</span>
+              <h2>{questions[count]?.question}</h2>
             </div>
             <div className="bar">
               <div className="progress"></div>
