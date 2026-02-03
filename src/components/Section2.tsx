@@ -42,9 +42,10 @@ const Section2 = ({
   const { setImg } = useOutletContext<OutletCtx>();
   function handleSelected(value: string) {
     setGame(value);
-    // setEndGame(true);
   }
-
+  function reload() {
+    location.reload();
+  }
   useEffect(() => {
     if (game) {
       const { quizzes } = data;
@@ -88,7 +89,9 @@ const Section2 = ({
             <span className="total">{total}</span>
             <span className="out">Out of 10</span>
           </div>
-          <button className="restart-btn">Play Again</button>
+          <button className="restart-btn" onClick={reload}>
+            Play Again
+          </button>
         </div>
       ) : (
         subject.includes(game) && (

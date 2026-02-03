@@ -75,10 +75,21 @@ input[type="radio"] {
   display: none;
 }
 input[type="radio"]:checked + label.option {
-  outline: 2px solid rgba(200, 139, 255, 0.9);
-  background: rgba(200, 139, 255, 0.12);
+  outline: 2px solid var(--purple-600);
+  /* background: rgba(200, 139, 255, 0.12); */
 }
 
+.option.correct .badge {
+  background-color: var(--green-500);
+  color: white;
+}
+.option.correct {
+  outline: 2px solid var(--green-500);
+}
+input[type="radio"]:checked + label .badge {
+  background-color: var(--purple-600);
+  color: white;
+}
 .msg {
   margin-top: 16px;
   display: flex;

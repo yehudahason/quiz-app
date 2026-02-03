@@ -24,77 +24,56 @@ const Answer = ({
   const [error, setError] = useState({
     display: "none",
   });
+  const [correct, setCorrect] = useState<number | null>(null);
   function handleSubmit() {
     if (selected === null) {
       setError({ display: "flex" });
       return;
     }
-    if (questions[count]?.answer === questions[count]?.options[selected])
+    if (questions[count]?.answer === questions[count]?.options[selected]) {
       setTotal((t) => t + 1);
-    setCount((c) => c + 1);
-    setError({ display: "none" });
+    } else {
+      handleCorrect(questions[count]?.answer);
+    }
+    setTimeout(() => {
+      setCount((c) => c + 1);
+      setError({ display: "none" });
+    }, 2000);
   }
 
+  function handleCorrect(answer: string) {
+    setCorrect(questions[count]?.options.indexOf(answer));
+  }
   useEffect(() => {
     if (count === 10) {
       setEndGame(true);
     }
     setSelected(null);
-  }, [count, total]);
+    setCorrect(null);
+  }, [count]);
   return (
     <>
       <div className="card">
-        <input
-          id="optA"
-          type="radio"
-          name="ratio"
-          value={0}
-          checked={selected === 0}
-          onChange={(e) => setSelected(Number(e.target.value))}
-        />
-        <label className="option" htmlFor="optA">
-          <div className="badge">A</div>
-          <div className="value">{questions[count]?.options[0]}</div>
-        </label>
+        {questions[count]?.options.map((opt, index) => (
+          <div key={index}>
+            <input
+              id={`opt${index}`}
+              type="radio"
+              name="ratio"
+              value={index}
+              checked={selected === index}
+              onChange={(e) => setSelected(Number(e.target.value))}
+            />
 
-        <input
-          id="optB"
-          type="radio"
-          name="ratio"
-          value={1}
-          checked={selected === 1}
-          onChange={(e) => setSelected(Number(e.target.value))}
-        />
-        <label className="option" htmlFor="optB">
-          <div className="badge">B</div>
-          <div className="value">{questions[count]?.options[1]}</div>
-        </label>
-
-        <input
-          id="optC"
-          type="radio"
-          name="ratio"
-          value={2}
-          checked={selected === 2}
-          onChange={(e) => setSelected(Number(e.target.value))}
-        />
-        <label className="option" htmlFor="optC">
-          <div className="badge">C</div>
-          <div className="value">{questions[count]?.options[2]}</div>
-        </label>
-
-        <input
-          id="optD"
-          type="radio"
-          name="ratio"
-          value={3}
-          checked={selected === 3}
-          onChange={(e) => setSelected(Number(e.target.value))}
-        />
-        <label className="option" htmlFor="optD">
-          <div className="badge">D</div>
-          <div className="value">{questions[count]?.options[3]}</div>
-        </label>
+            <label
+              htmlFor={`opt${index}`}
+              className={`option ${correct === index ? "correct" : ""}`}
+            >
+              <div className="badge">{String.fromCharCode(65 + index)}</div>
+              <div className="value">{opt}</div>
+            </label>
+          </div>
+        ))}
 
         <button className="submit" onClick={handleSubmit}>
           Submit Answer

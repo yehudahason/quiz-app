@@ -20,7 +20,10 @@ const Layout = () => {
     <main>
       <div className="head">
         <div className="access-icon">
-          <img src={img ? baseurl + img?.icon : ""} alt={img?.title} />
+          <div className="img-con">
+            <img src={img ? baseurl + img?.icon : ""} alt={img?.title} />
+          </div>
+
           <span className="access-title">{img?.title}</span>
         </div>
         <div className="theme-toggle">
