@@ -13,6 +13,12 @@ type Props = {
   setTotal: React.Dispatch<React.SetStateAction<number>>;
 };
 
+import { useOutletContext } from "react-router-dom";
+
+type OutletCtx = {
+  setImg: React.Dispatch<React.SetStateAction<object | undefined>>;
+};
+
 const subject = ["HTML", "CSS", "JavaScript", "Accessibility"];
 import { useEffect } from "react";
 import type { Question, Quiz, QuizData } from "../types/quiz";
@@ -33,6 +39,7 @@ const Section2 = ({
   total,
   setTotal,
 }: Props) => {
+  const { setImg } = useOutletContext<OutletCtx>();
   function handleSelected(value: string) {
     setGame(value);
     // setEndGame(true);
@@ -43,6 +50,7 @@ const Section2 = ({
       const { quizzes } = data;
       const quiz = quizzes.find((q) => q.title === game) as Quiz;
       setRow(quiz);
+      setImg({ icon: quiz?.icon, title: quiz?.title });
     }
     // if (row) console.log(row.questions);
   }, [game, row]);
@@ -85,7 +93,6 @@ const Section2 = ({
       ) : (
         subject.includes(game) && (
           <Answer
-            val={game}
             questions={questions}
             count={count}
             setCount={setCount}

@@ -462,6 +462,13 @@ body.dark .out {
   .upper {
     gap: 24px;
   }
+  .upper .game {
+    font: var(--text-6);
+    color: var(--grey-500);
+  }
+  body.dark .game {
+    color: var(--blue-300);
+  }
   .score-stage {
     gap: 32px;
     height: 512px;
@@ -500,6 +507,10 @@ body.dark .out {
   .access-icon {
     width: 253px;
     height: 56px;
+    color: var(--blue-900);
+  }
+  body.dark .access-icon {
+    color: white;
   }
   .quiz-con .sec1 {
     width: 50%;

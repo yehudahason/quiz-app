@@ -41,8 +41,6 @@ const Home = () => {
         <Section1
           game={game}
           endGame={endGame}
-          data={data}
-          row={row}
           questions={questions}
           count={count}
         />

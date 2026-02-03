@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import "../css/answer.css";
-import { type Question, type Quiz } from "../types/quiz";
+import { type Question } from "../types/quiz";
 const baseurl = import.meta.env.BASE_URL;
 
 type Props = {
-  val: string;
   questions: Question[];
   setCount: React.Dispatch<React.SetStateAction<number>>;
   count: number;
@@ -14,7 +13,6 @@ type Props = {
 };
 
 const Answer = ({
-  val,
   questions,
   setCount,
   count,
@@ -23,12 +21,18 @@ const Answer = ({
   setTotal,
 }: Props) => {
   const [selected, setSelected] = useState<number | null>(null);
-
+  const [error, setError] = useState({
+    display: "none",
+  });
   function handleSubmit() {
-    if (selected === null) return;
+    if (selected === null) {
+      setError({ display: "flex" });
+      return;
+    }
     if (questions[count]?.answer === questions[count]?.options[selected])
       setTotal((t) => t + 1);
     setCount((c) => c + 1);
+    setError({ display: "none" });
   }
 
   useEffect(() => {
@@ -95,7 +99,7 @@ const Answer = ({
         <button className="submit" onClick={handleSubmit}>
           Submit Answer
         </button>
-        <span className="msg">
+        <span className="msg" style={error}>
           <img src={baseurl + "/assets/images/icon-error.svg"} alt="" />
           Pleae select an answer
         </span>

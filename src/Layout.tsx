@@ -4,6 +4,10 @@ const baseurl = import.meta.env.BASE_URL;
 
 const Layout = () => {
   const [isDark, setIsDark] = useState(false);
+  const [img, setImg] = useState<{
+    icon: string | undefined;
+    title: string | undefined;
+  }>();
   function toggleTheme() {
     setIsDark((prev) => !prev);
   }
@@ -16,11 +20,8 @@ const Layout = () => {
     <main>
       <div className="head">
         <div className="access-icon">
-          <img
-            src={baseurl + "/assets/images/icon-accessibility.svg"}
-            alt="Accessibility"
-          />
-          <span className="access-title">Accessibility</span>
+          <img src={img ? baseurl + img?.icon : ""} alt={img?.title} />
+          <span className="access-title">{img?.title}</span>
         </div>
         <div className="theme-toggle">
           <span className="icon sun">
@@ -37,7 +38,7 @@ const Layout = () => {
           </span>
         </div>
       </div>
-      <Outlet />
+      <Outlet context={{ setImg }} />
     </main>
   );
 };

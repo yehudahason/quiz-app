@@ -1,16 +1,14 @@
-import type { Question, Quiz, QuizData } from "../types/quiz";
+import type { Question } from "../types/quiz";
 
 type Props = {
   game: string;
   endGame: boolean;
-  data: QuizData;
-  row: Quiz;
   questions: Question[];
   count: number;
 };
 const subject = ["HTML", "CSS", "JavaScript", "Accessibility"];
 
-const Section1 = ({ game, endGame, data, row, questions, count }: Props) => {
+const Section1 = ({ game, endGame, questions, count }: Props) => {
   return (
     <>
       {!endGame &&
