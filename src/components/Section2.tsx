@@ -91,7 +91,6 @@ const Section2 = ({
             count={count}
             setCount={setCount}
             setEndGame={setEndGame}
-            total={total}
             setTotal={setTotal}
           />
         )
