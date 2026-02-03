@@ -291,7 +291,7 @@ body.dark .bar {
   height: 8px;
   border-radius: 10px;
   background-color: var(--purple-600);
-  width: 100%;
+  /* width: 100%; */
 }
 .upper {
   display: flex;
@@ -485,7 +485,7 @@ body.dark .out {
   }
 }
 
-@media (min-width: 1150px) {
+@media (min-width: 1200px) {
   main {
     gap: 85px;
   }

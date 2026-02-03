@@ -21,7 +21,10 @@ const Section1 = ({ game, endGame, data, row, questions, count }: Props) => {
               <h2>{questions[count]?.question}</h2>
             </div>
             <div className="bar">
-              <div className="progress"></div>
+              <div
+                className="progress"
+                style={{ width: `${count * 10}%` }}
+              ></div>
             </div>
           </div>
         ) : (
