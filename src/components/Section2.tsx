@@ -9,6 +9,8 @@ type Props = {
   questions: Question[];
   count: number;
   setCount: React.Dispatch<React.SetStateAction<number>>;
+  total: number;
+  setTotal: React.Dispatch<React.SetStateAction<number>>;
 };
 
 const subject = ["HTML", "CSS", "JavaScript", "Accessibility"];
@@ -28,6 +30,8 @@ const Section2 = ({
   questions,
   count,
   setCount,
+  total,
+  setTotal,
 }: Props) => {
   function handleSelected(value: string) {
     setGame(value);
@@ -67,13 +71,13 @@ const Section2 = ({
       )}
 
       {endGame ? (
-        <div className="score-game">
+        <div className="score-stage">
           <div className="score">
             <h2>
               <img src={baseurl + row.icon} alt="" />
               <span>{row.title}</span>
             </h2>
-            <span className="total">8</span>
+            <span className="total">{total}</span>
             <span className="out">Out of 10</span>
           </div>
           <button className="restart-btn">Play Again</button>
@@ -86,6 +90,8 @@ const Section2 = ({
             count={count}
             setCount={setCount}
             setEndGame={setEndGame}
+            total={total}
+            setTotal={setTotal}
           />
         )
       )}

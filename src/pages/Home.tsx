@@ -12,6 +12,7 @@ const Home = () => {
   const [row, setRow] = useState<Quiz>({});
   const [questions, setQuestions] = useState<Question[]>([]);
   const [count, SetCount] = useState(0);
+  const [total, setTotal] = useState(0);
 
   useEffect(() => {}, [row]);
 
@@ -58,6 +59,8 @@ const Home = () => {
           questions={questions}
           count={count}
           setCount={SetCount}
+          total={total}
+          setTotal={setTotal}
         />
       </div>
     </section>
