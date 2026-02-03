@@ -40,8 +40,10 @@ const Section2 = ({
   setTotal,
 }: Props) => {
   const { setImg } = useOutletContext<OutletCtx>();
-  function handleSelected(value: string) {
-    setGame(value);
+  function handleSelected(value: string | undefined) {
+    if (value) {
+      setGame(value);
+    }
   }
   function reload() {
     location.reload();
@@ -59,23 +61,12 @@ const Section2 = ({
     <>
       {!game && (
         <ul className="startquiz">
-          <li onClick={() => handleSelected("HTML")}>
-            <img src={baseurl + "/assets/images/icon-html.svg"} alt="" /> HTML
-          </li>
-          <li onClick={() => handleSelected("CSS")}>
-            <img src={baseurl + "/assets/images/icon-css.svg"} alt="" /> CSS
-          </li>
-          <li onClick={() => handleSelected("JavaScript")}>
-            <img src={baseurl + "/assets/images/icon-js.svg"} alt="" />
-            JavaScript
-          </li>
-          <li onClick={() => handleSelected("Accessibility")}>
-            <img
-              src={baseurl + "/assets/images/icon-accessibility.svg"}
-              alt=""
-            />
-            Accessibility
-          </li>
+          {data.quizzes.map((opt) => (
+            <li key={opt.title} onClick={() => handleSelected(opt.title)}>
+              <img src={baseurl + opt.icon} alt={opt.title} />
+              {opt.title}
+            </li>
+          ))}
         </ul>
       )}
 
