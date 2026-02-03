@@ -28,7 +28,6 @@ const Answer = ({
     const idx = options.indexOf(answer);
     setCorrect(idx >= 0 ? idx : null);
   }
-
   function handleSubmit() {
     if (locked) return;
 
@@ -42,29 +41,35 @@ const Answer = ({
 
     setError({ display: "none" });
 
-    // ✅ Correct: go to next question immediately
+    const isLast = count + 1 === questions.length;
+
+    // ✅ Correct
     if (q.answer === q.options[selected]) {
       setTotal((t) => t + 1);
+
+      if (isLast) {
+        setEndGame(true);
+        return;
+      }
+
       setCount((c) => c + 1);
       return;
     }
 
-    // ❌ Wrong: show correct answer & lock clicks for 2 seconds
+    // ❌ Wrong
     setLocked(true);
     handleCorrect(q.answer, q.options);
 
     setTimeout(() => {
-      setCount((c) => {
-        if (c + 1 === questions.length) {
-          setEndGame(true);
-          return c; // stop incrementing
-        }
-        return c + 1;
-      });
+      if (isLast) {
+        setEndGame(true);
+        return;
+      }
+
+      setCount((c) => c + 1);
       setLocked(false);
     }, 2000);
   }
-
   useEffect(() => {
     setSelected(null);
     setCorrect(null);
