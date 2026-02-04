@@ -48,9 +48,8 @@ const Answer = ({
     if (q.answer === q.options[selected]) {
       setTotal((t) => t + 1);
       handleCorrect(q.answer, q.options);
-
+      setLocked(true);
       if (isLast) {
-        setLocked(false);
         setEndGame(true);
         return;
       }
@@ -58,6 +57,7 @@ const Answer = ({
       setTimeout(() => {
         setCount((c) => c + 1);
         setSubmitted(false);
+        setLocked(false);
         return;
       }, 2000);
     } else {

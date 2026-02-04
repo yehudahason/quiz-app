@@ -127,6 +127,7 @@ label.option.correct .badge {
 }
 .value img {
   visibility: hidden;
+  content: url("/public/assets/images/icon-error.svg");
 }
 .msg {
   margin-top: 16px;
