@@ -7,13 +7,9 @@ This is a solution to the [Frontend quiz app challenge on Frontend Mentor](https
 
 - Live Site URL: [GitHub Pages](https://yehudahason.github.io/quiz-app/)
 
-## My process
-
 ### Built with
 
 - React
-
-### What I learned
 
 ## Author
 
