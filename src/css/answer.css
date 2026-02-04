@@ -78,17 +78,55 @@ input[type="radio"]:checked + label.option {
   outline: 2px solid var(--purple-600);
   /* background: rgba(200, 139, 255, 0.12); */
 }
+input[type="radio"]:checked + label.option.wrong {
+  outline: 2px solid var(--red-500);
+  /* background: rgba(200, 139, 255, 0.12); */
+}
+input[type="radio"]:checked + label.option.wrong .badge {
+  background-color: var(--red-500);
+  /* background: rgba(200, 139, 255, 0.12); */
+}
+input[type="radio"]:checked + label.option.correct {
+  outline: 2px solid var(--green-500);
+  /* background: rgba(200, 139, 255, 0.12); */
+}
 
-.option.correct .badge {
+input[type="radio"]:checked + label .badge {
+  background-color: var(--purple-600);
+  color: white;
+}
+input[type="radio"]:checked + label.option.correct .badge {
+  background-color: var(--green-500);
+  color: white;
+}
+
+label.option.correct .badge {
   background-color: var(--green-500);
   color: white;
 }
 .option.correct {
   outline: 2px solid var(--green-500);
 }
-input[type="radio"]:checked + label .badge {
-  background-color: var(--purple-600);
-  color: white;
+
+.option.correct img {
+  content: url(/assets/images/icon-correct.svg);
+  visibility: visible;
+}
+
+.option.wrong img {
+  content: url(/assets/images/icon-error.svg);
+  visibility: visible;
+}
+
+.value {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px 8px;
+}
+.value img {
+  visibility: hidden;
 }
 .msg {
   margin-top: 16px;

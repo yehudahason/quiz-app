@@ -22,6 +22,7 @@ const Answer = ({
   const [selected, setSelected] = useState<number | null>(null);
   const [error, setError] = useState({ display: "none" });
   const [correct, setCorrect] = useState<number | null>(null);
+  const [submitted, setSubmitted] = useState(false);
   const [locked, setLocked] = useState(false);
 
   function handleCorrect(answer: string, options: string[]) {
@@ -40,7 +41,7 @@ const Answer = ({
     if (!q) return;
 
     setError({ display: "none" });
-
+    setSubmitted(true);
     const isLast = count + 1 === questions.length;
 
     // ✅ Correct
@@ -52,12 +53,16 @@ const Answer = ({
         return;
       }
 
-      setCount((c) => c + 1);
-      return;
+      setTimeout(() => {
+        setCount((c) => c + 1);
+        setSubmitted(false);
+        return;
+      }, 2000);
     }
 
     // ❌ Wrong
     setLocked(true);
+    setSubmitted(true);
     handleCorrect(q.answer, q.options);
 
     setTimeout(() => {
@@ -68,6 +73,7 @@ const Answer = ({
 
       setCount((c) => c + 1);
       setLocked(false);
+      setSubmitted(false);
     }, 2000);
   }
   useEffect(() => {
@@ -93,11 +99,19 @@ const Answer = ({
 
             <label
               htmlFor={`opt${index}`}
-              className={`option ${correct === index ? "correct" : ""}`}
+              className={`option
+    ${submitted && correct === index ? "correct" : ""}
+    ${submitted && selected === index && correct !== index ? "wrong" : ""}
+  `}
               style={{ pointerEvents: locked ? "none" : "auto" }}
             >
               <div className="badge">{String.fromCharCode(65 + index)}</div>
-              <div className="value">{opt}</div>
+              <div className="value">
+                <span>{opt}</span>
+                <span>
+                  <img />
+                </span>
+              </div>
             </label>
           </div>
         ))}
