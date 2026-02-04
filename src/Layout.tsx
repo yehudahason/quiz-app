@@ -1,9 +1,8 @@
 import { Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
 const baseurl = import.meta.env.BASE_URL;
-
 const Layout = () => {
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(true);
   const [img, setImg] = useState<{
     icon: string | undefined;
     title: string | undefined;
@@ -19,7 +18,7 @@ const Layout = () => {
   return (
     <main>
       <div className="head">
-        <div className="access-icon">
+        <div className={img ? "access-icon" : "access-icon hide"}>
           <div className="img-con">
             <img src={img ? baseurl + img?.icon : ""} alt={img?.title} />
           </div>

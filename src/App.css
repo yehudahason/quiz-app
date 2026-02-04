@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -37,7 +39,7 @@
      ========================= */
 
   --text-1: 500 88px/1 "Rubik", sans-serif;
-  --text-2-md: 800 40px/1 "Rubik", sans-serif;
+  --text-2-md: 500 40px/1 "Rubik", sans-serif;
   --text-2-light: 300 40px/1 "Rubik", sans-serif;
   --text-3: 500 20px/1.2 "Rubik", sans-serif;
   --text-4: 500 18px/1 "Rubik", sans-serif;
@@ -108,6 +110,9 @@ main {
   background-color: var(--purple-100);
   border-radius: 6px;
   padding: 4px;
+}
+.access-icon.hide {
+  visibility: hidden;
 }
 body.dark .access-title {
   color: white;
@@ -202,23 +207,19 @@ body.dark .access-title {
 .start-con1 {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 48px;
 }
 .end-quiz h1 {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
-h1 span.a {
+.start-con1 h1 span.a {
   color: var(--blue-900);
-  font:
-    300 28px/1 "Rubik",
-    sans-serif;
+  font: var(--text-2-light);
 }
-h1 span.b {
-  font:
-    800 28px/1 "Rubik",
-    sans-serif;
+.start-con1 h1 span.b {
+  font: var(--text-2-md);
 
   color: var(--blue-900);
 }
@@ -269,6 +270,9 @@ body.dark ul.startquiz li {
 ul.startquiz li img {
   width: 28px;
   height: 28px;
+  background-color: var(--purple-100);
+  border-radius: 8px;
+  padding: 3px;
 }
 
 .quiz-con {
@@ -313,7 +317,7 @@ body.dark .stage {
 }
 .upper h2 {
   font: var(--text-3);
-  font-weight: 600;
+  /* font-weight: 600; */
   color: var(--blue-900);
 }
 
@@ -339,7 +343,7 @@ body.dark .upper h2 {
   border-radius: 16px;
   outline: none;
   border: none;
-  font-weight: 800;
+  /* font-weight: 800; */
 }
 
 .score {
@@ -382,12 +386,12 @@ body.dark .out {
 .score h2 span {
   font: var(--text-4);
   color: var(--blue-900);
-  font-weight: 700;
+  /* font-weight: 700; */
 }
 .score .total {
   font: var(--text-1);
   color: var(--blue-900);
-  font-weight: 800;
+  /* font-weight: 800; */
 }
 .score .out {
   font: var(--text-4);
@@ -406,7 +410,7 @@ body.dark .out {
 @media (min-width: 700px) {
   :root {
     --text-1: 500 144px/1 "Rubik", sans-serif;
-    --text-2-md: 800 64px/1 "Rubik", sans-serif;
+    --text-2-md: 500 64px/1 "Rubik", sans-serif;
     --text-2-light: 300 64px/1 "Rubik", sans-serif;
     --text-3: 500 36px/1.2 "Rubik", sans-serif;
     --text-4: 500 28px/1 "Rubik", sans-serif;
