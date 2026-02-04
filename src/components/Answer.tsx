@@ -47,8 +47,10 @@ const Answer = ({
     // ✅ Correct
     if (q.answer === q.options[selected]) {
       setTotal((t) => t + 1);
+      handleCorrect(q.answer, q.options);
 
       if (isLast) {
+        setLocked(false);
         setEndGame(true);
         return;
       }
@@ -58,23 +60,24 @@ const Answer = ({
         setSubmitted(false);
         return;
       }, 2000);
+    } else {
+      // ❌ Wrong
+      setLocked(true);
+      setSubmitted(true);
+      handleCorrect(q.answer, q.options);
+
+      setTimeout(() => {
+        if (isLast) {
+          setLocked(false);
+          setEndGame(true);
+          return;
+        }
+
+        setCount((c) => c + 1);
+        setLocked(false);
+        setSubmitted(false);
+      }, 2000);
     }
-
-    // ❌ Wrong
-    setLocked(true);
-    setSubmitted(true);
-    handleCorrect(q.answer, q.options);
-
-    setTimeout(() => {
-      if (isLast) {
-        setEndGame(true);
-        return;
-      }
-
-      setCount((c) => c + 1);
-      setLocked(false);
-      setSubmitted(false);
-    }, 2000);
   }
   useEffect(() => {
     setSelected(null);
