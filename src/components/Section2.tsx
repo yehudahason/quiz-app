@@ -62,7 +62,11 @@ const Section2 = ({
       {!game && (
         <ul className="startquiz">
           {data.quizzes.map((opt) => (
-            <li key={opt.title} onClick={() => handleSelected(opt.title)}>
+            <li
+              key={opt.title}
+              onClick={() => handleSelected(opt.title)}
+              tabIndex={0}
+            >
               <img src={baseurl + opt.icon} alt={opt.title} />
               {opt.title}
             </li>

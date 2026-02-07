@@ -107,6 +107,7 @@ const Answer = ({
     ${submitted && selected === index && correct !== index ? "wrong" : ""}
   `}
               style={{ pointerEvents: locked ? "none" : "auto" }}
+              tabIndex={0}
             >
               <div className="badge">{String.fromCharCode(65 + index)}</div>
               <div className="value">
