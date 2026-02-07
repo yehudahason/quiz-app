@@ -263,6 +263,9 @@ ul.startquiz li {
   font: var(--text-4);
   height: 72px;
 }
+ul.startquiz li:hover {
+  cursor: pointer;
+}
 body.dark ul.startquiz li {
   background-color: var(--blue-850);
   color: white;
