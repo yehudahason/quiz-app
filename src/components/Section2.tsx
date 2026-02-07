@@ -66,6 +66,11 @@ const Section2 = ({
               key={opt.title}
               onClick={() => handleSelected(opt.title)}
               tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  handleSelected(opt.title);
+                }
+              }}
             >
               <img src={baseurl + opt.icon} alt={opt.title} />
               {opt.title}

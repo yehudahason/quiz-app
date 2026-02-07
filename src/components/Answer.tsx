@@ -107,7 +107,15 @@ const Answer = ({
     ${submitted && selected === index && correct !== index ? "wrong" : ""}
   `}
               style={{ pointerEvents: locked ? "none" : "auto" }}
-              tabIndex={0}
+              tabIndex={locked ? -1 : 0}
+              onKeyDown={(e) => {
+                if (locked) return;
+
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault(); // stop page scroll on Space
+                  setSelected(index);
+                }
+              }}
             >
               <div className="badge">{String.fromCharCode(65 + index)}</div>
               <div className="value">
