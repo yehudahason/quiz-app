@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
+import Footer from "./components/Footer";
 const baseurl = import.meta.env.BASE_URL;
 const Layout = () => {
   const [isDark, setIsDark] = useState(true);
@@ -16,32 +17,36 @@ const Layout = () => {
     document.body.classList.toggle("light", !isDark);
   }, [isDark]);
   return (
-    <main>
-      <div className="head">
-        <div className={img ? "access-icon" : "access-icon hide"}>
-          <div className="img-con">
-            <img src={img ? baseurl + img?.icon : ""} alt={img?.title} />
+    <>
+      <main>
+        <div className="head">
+          <div className={img ? "access-icon" : "access-icon hide"}>
+            <div className="img-con">
+              <img src={img ? baseurl + img?.icon : ""} alt={img?.title} />
+            </div>
+
+            <span className="access-title">{img?.title}</span>
           </div>
+          <div className="theme-toggle">
+            <span className="icon sun">
+              <div className={isDark ? "img-sun dark" : "img-sun"}></div>
+            </span>
 
-          <span className="access-title">{img?.title}</span>
+            <label className="switch">
+              <input type="checkbox" checked={isDark} onChange={toggleTheme} />
+              <span className="slider"></span>
+            </label>
+
+            <span className="icon moon">
+              <div className={isDark ? "img-moon dark" : "img-moon"}></div>
+            </span>
+          </div>
         </div>
-        <div className="theme-toggle">
-          <span className="icon sun">
-            <div className={isDark ? "img-sun dark" : "img-sun"}></div>
-          </span>
+        <Outlet context={{ setImg }} />
 
-          <label className="switch">
-            <input type="checkbox" checked={isDark} onChange={toggleTheme} />
-            <span className="slider"></span>
-          </label>
-
-          <span className="icon moon">
-            <div className={isDark ? "img-moon dark" : "img-moon"}></div>
-          </span>
-        </div>
-      </div>
-      <Outlet context={{ setImg }} />
-    </main>
+        <Footer />
+      </main>
+    </>
   );
 };
 

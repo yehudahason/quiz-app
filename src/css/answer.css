@@ -15,15 +15,11 @@
   margin: 0 0 16px;
   cursor: pointer;
   background-color: white;
-  transition:
-    transform 120ms ease,
-    background 120ms ease;
-}
-.option:hover {
-  /* background: rgba(255, 255, 255, 0.09); */
-  transform: translateY(-1px);
 }
 
+.option:hover {
+  opacity: 0.9;
+}
 body.dark .option {
   background-color: var(--blue-850);
   color: white;
@@ -61,13 +57,9 @@ body.dark .value {
   font-weight: 600;
   cursor: pointer;
   box-shadow: 0 10px 20px rgba(200, 139, 255, 0.25);
-  transition:
-    transform 120ms ease,
-    filter 120ms ease;
 }
 .submit:hover {
-  filter: brightness(1.03);
-  transform: translateY(-1px);
+  opacity: 0.9;
 }
 .submit:active {
   transform: translateY(0px);
