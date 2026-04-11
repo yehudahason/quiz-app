@@ -5,7 +5,7 @@ This is a solution to the [Frontend quiz app challenge on Frontend Mentor](https
 
 ### Links
 
-- Live Site URL: [GitHub Pages](https://yehudahason.github.io/quiz-app/)
+- My solution at : [GitHub Pages](https://yehudahason.github.io/quiz-app/)
 
 ### Built with
 
