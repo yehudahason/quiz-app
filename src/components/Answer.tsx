@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "../css/answer.css";
 import { type Question } from "../types/quiz";
 
@@ -24,6 +24,7 @@ const Answer = ({
   const [correct, setCorrect] = useState<number | null>(null);
   const [submitted, setSubmitted] = useState(false);
   const [locked, setLocked] = useState(false);
+  const ULref = useRef<HTMLUListElement>(null);
 
   function handleCorrect(answer: string, options: string[]) {
     const idx = options.indexOf(answer);
@@ -83,13 +84,14 @@ const Answer = ({
     setSelected(null);
     setCorrect(null);
     setLocked(false);
+    ULref.current?.focus();
   }, [count]);
 
   return (
     <>
-      <div className="card">
+      <ul className="card" aria-label="Quiz" ref={ULref} tabIndex={-1}>
         {questions[count]?.options.map((opt, index) => (
-          <div key={index}>
+          <li key={index}>
             <input
               id={`opt${index}`}
               type="radio"
@@ -125,7 +127,7 @@ const Answer = ({
                 </span>
               </div>
             </label>
-          </div>
+          </li>
         ))}
 
         <button className="submit" onClick={handleSubmit} disabled={locked}>
@@ -136,7 +138,7 @@ const Answer = ({
           <img src={baseurl + "/assets/images/icon-error.svg"} alt="" />
           Pleae select an answer
         </span>
-      </div>
+      </ul>
     </>
   );
 };

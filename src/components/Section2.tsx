@@ -60,7 +60,7 @@ const Section2 = ({
   return (
     <>
       {!game && (
-        <ul className="startquiz">
+        <ul className="startquiz" aria-label="Start Quiz">
           {data.quizzes.map((opt) => (
             <li
               key={opt.title}

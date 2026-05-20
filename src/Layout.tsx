@@ -28,16 +28,24 @@ const Layout = () => {
             <span className="access-title">{img?.title}</span>
           </div>
           <div className="theme-toggle">
-            <span className="icon sun">
+            {/* 1. Added an ID and an aria-label describing the left side */}
+            <span className="icon sun" id="sun-label" aria-label="Light mode">
               <div className={isDark ? "img-sun dark" : "img-sun"}></div>
             </span>
 
             <label className="switch">
-              <input type="checkbox" checked={isDark} onChange={toggleTheme} />
+              <input
+                type="checkbox"
+                checked={isDark}
+                onChange={toggleTheme}
+                role="switch"
+                aria-checked={isDark}
+                aria-labelledby="sun-label moon-label"
+              />
               <span className="slider"></span>
             </label>
 
-            <span className="icon moon">
+            <span className="icon moon" id="moon-label" aria-label="Dark mode">
               <div className={isDark ? "img-moon dark" : "img-moon"}></div>
             </span>
           </div>
